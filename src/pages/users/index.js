@@ -99,7 +99,7 @@ const columns = [
     accessorKey: 'name',
     header: ({ column }) => {
       return (
-        <div>
+        <div className="flex">
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")} //sorting
@@ -166,7 +166,12 @@ const columns = [
   },
   {
     accessorKey: 'phone',
-    header: "Phone",
+    header: () => (
+      <div className="min-w-[150px]">Phone</div>
+  ),
+  cell: ({ cell }) => (
+      <div className="min-w-[150px]">{cell.getValue()}</div>
+  )
   },
   {
     accessorKey: 'website',
