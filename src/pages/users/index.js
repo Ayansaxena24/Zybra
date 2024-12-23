@@ -76,7 +76,7 @@ const rowVariants = {
   })
 };
 
-// Fetch function remains the same
+// Fetch user data from jsonplaceholder api
 const fetchUsers = async (page, limit) => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/users?_page=${page}&_limit=${limit}`);
   
@@ -93,6 +93,7 @@ const fetchUsers = async (page, limit) => {
   };
 };
 
+// respective columns and their features
 const columns = [
   {
     accessorKey: 'name',
@@ -101,12 +102,13 @@ const columns = [
         <div>
         <Button
           variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")} //sorting
         >
           Name
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-        <Popover>
+        {/* used popover instead of directly using the input for better UI */}
+        <Popover>                                                              
             <PopoverTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Filter className="h-4 w-4" />
@@ -115,7 +117,7 @@ const columns = [
             <PopoverContent className="w-80">
               <div className="space-y-2">
                 <h4 className="font-medium">Filter by name</h4>
-                <Input
+                <Input                                                         //filtering
                   placeholder="Filter name..."
                   value={(column.getFilterValue() ?? '')}
                   onChange={(e) => column.setFilterValue(e.target.value)}
@@ -180,13 +182,13 @@ export default function UsersPage() {
   const currentPage = parseInt(router.query.page) || 1;
   const itemsPerPage = parseInt(router.query.limit) || 5;
 
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isLoading, isError, error } = useQuery({ //fetching data by using useQuery from tanstack query
     queryKey: ['users', currentPage, itemsPerPage],
     queryFn: () => fetchUsers(currentPage, itemsPerPage),
     keepPreviousData: true
   });
 
-  const table = useReactTable({
+  const table = useReactTable({                           //using useReactTable from tanstack react-table along with desired features
     data: data?.users || [],
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -203,7 +205,7 @@ export default function UsersPage() {
     manualPagination: true,
   });
 
-  const handlePageChange = (newPage) => {
+  const handlePageChange = (newPage) => {                  //pagination logic             
     if (newPage >= 1 && (!data?.totalPages || newPage <= data.totalPages)) {
       router.push({
         pathname: router.pathname,
@@ -212,14 +214,14 @@ export default function UsersPage() {
     }
   };
 
-  const handleLimitChange = (value) => {
+  const handleLimitChange = (value) => {                    //limit change logic
     router.push({
       pathname: router.pathname,
       query: { ...router.query, limit: value, page: 1 },
     });
   };
 
-  if (isLoading) {
+  if (isLoading) {                                         //loading state                  
     return (
       <div className="flex items-center justify-center min-h-screen">
         <Loader2 className="h-8 w-8 animate-spin" />
@@ -227,7 +229,7 @@ export default function UsersPage() {
     );
   }
 
-  if (isError) {
+  if (isError) {                                            //error state   
     return (
       <div className="flex items-center justify-center min-h-screen">
         <p className="text-red-500">Error: {error.message}</p>
