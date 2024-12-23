@@ -12,12 +12,16 @@ A simple web application built using **Next.js**, **Shadcn**, **TanStack Query**
 
 ### 2. Table Features
 - **Sorting**: Sort data by columns `Name` and `Email` columns.
+  
+  ![Home](https://github.com/user-attachments/assets/983afabf-7696-4a2c-8c26-69c2315de4a7)
+  
 - **Filtering**: Column-specific filtering (e.g., filter users by name or email).
+
+  ![filter + sort](https://github.com/user-attachments/assets/f225a246-22fc-4856-bb3d-d73be622d586)
+  
 - **Search**: Global search input to filter data across all columns.
 - **Pagination**: Paginated data display with dynamic routing support (e.g., `/users?page=1&limit=5`).
 
-  ![Home](https://github.com/user-attachments/assets/983afabf-7696-4a2c-8c26-69c2315de4a7)
-  ![filter + sort](https://github.com/user-attachments/assets/f225a246-22fc-4856-bb3d-d73be622d586)
   ![Select](https://github.com/user-attachments/assets/40b33c06-1b17-45eb-94de-adb83cfb62d0)
 
 
@@ -30,10 +34,10 @@ A simple web application built using **Next.js**, **Shadcn**, **TanStack Query**
 ## **Tech Stack**
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: [Shadcn](https://shadcn.dev/)
+- **Styling**: [Shadcn](https://shadcn.dev/) and [TailwindCSS](https://tailwindcss.com/)
 - **Data Fetching**: [TanStack Query](https://tanstack.com/query/v4)
 - **Table Management**: [TanStack Table](https://tanstack.com/table/v8)
-- **Animation**: [Framer Motion](https://motion.dev/)
+- **Animation**: [Framer Motion](https://motion.dev/) and [React Toastify](https://fkhadra.github.io/react-toastify/introduction/)
 
 ---
 
@@ -47,8 +51,8 @@ Ensure you have the following installed:
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/user-management-table.git
-   cd user-management-table
+   git clone https://github.com/Ayansaxena24/Zybra.git
+   cd zybra
    ```
 2. Install dependencies:
    ```bash
