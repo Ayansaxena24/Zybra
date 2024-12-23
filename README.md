@@ -34,7 +34,7 @@ A simple web application built using **Next.js**, **Shadcn**, **TanStack Query**
 ## **Tech Stack**
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: [Shadcn](https://shadcn.dev/)
+- **Styling**: [Shadcn](https://shadcn.dev/) and [TailwindCSS](https://tailwindcss.com/)
 - **Data Fetching**: [TanStack Query](https://tanstack.com/query/v4)
 - **Table Management**: [TanStack Table](https://tanstack.com/table/v8)
 - **Animation**: [Framer Motion](https://motion.dev/)
