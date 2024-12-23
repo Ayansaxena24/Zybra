@@ -37,7 +37,7 @@ A simple web application built using **Next.js**, **Shadcn**, **TanStack Query**
 - **Styling**: [Shadcn](https://shadcn.dev/) and [TailwindCSS](https://tailwindcss.com/)
 - **Data Fetching**: [TanStack Query](https://tanstack.com/query/v4)
 - **Table Management**: [TanStack Table](https://tanstack.com/table/v8)
-- **Animation**: [Framer Motion](https://motion.dev/)
+- **Animation**: [Framer Motion](https://motion.dev/) and [React Toastify](https://fkhadra.github.io/react-toastify/introduction/)
 
 ---
 
@@ -52,7 +52,7 @@ Ensure you have the following installed:
 1. Clone the repository:
    ```bash
    git clone https://github.com/Ayansaxena24/Zybra.git
-   cd user-management-table
+   cd zybra
    ```
 2. Install dependencies:
    ```bash
