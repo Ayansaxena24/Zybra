@@ -11,10 +11,10 @@ A simple web application built using **Next.js**, **Shadcn**, **TanStack Query**
 - Utilizes **TanStack Query** for efficient data fetching and caching.
 
 ### 2. Table Features
-- **Sorting**: Sort data by columns such as `Name` and `Email`.
+- **Sorting**: Sort data by columns `Name` and `Email` columns.
 - **Filtering**: Column-specific filtering (e.g., filter users by name or email).
 - **Search**: Global search input to filter data across all columns.
-- **Pagination**: Paginated data display with dynamic routing support (e.g., `/users?page=2`).
+- **Pagination**: Paginated data display with dynamic routing support (e.g., `/users?page=1&limit=5`).
 
 ### 3. UI/UX
 - Built with **Shadcn** for a clean, responsive, and user-friendly interface.
@@ -25,9 +25,10 @@ A simple web application built using **Next.js**, **Shadcn**, **TanStack Query**
 ## **Tech Stack**
 
 - **Framework**: [Next.js](https://nextjs.org/)
-- **Styling**: [Shadcn (Radix UI)](https://shadcn.dev/)
+- **Styling**: [Shadcn](https://shadcn.dev/)
 - **Data Fetching**: [TanStack Query](https://tanstack.com/query/v4)
 - **Table Management**: [TanStack Table](https://tanstack.com/table/v8)
+- **Animation**: [Framer Motion](https://motion.dev/)
 
 ---
 
