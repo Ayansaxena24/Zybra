@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useQuery } from '@tanstack/react-query';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -34,7 +34,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { ArrowUpDown, Loader2 } from "lucide-react";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
+import { Filter, ArrowUpDown, Loader2 } from "lucide-react";
 
 // Simplified animation variants
 const containerVariants = {
@@ -76,7 +81,7 @@ const fetchUsers = async (page, limit) => {
   const response = await fetch(`https://jsonplaceholder.typicode.com/users?_page=${page}&_limit=${limit}`);
   
   if (!response.ok) {
-    throw new Error('Network response was not ok');
+    throw new Error('Error loading page');
   }
   
   const totalCount = response.headers.get('x-total-count');
@@ -93,6 +98,7 @@ const columns = [
     accessorKey: 'name',
     header: ({ column }) => {
       return (
+        <div>
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
@@ -100,6 +106,25 @@ const columns = [
           Name
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+        <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Filter className="h-4 w-4" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+              <div className="space-y-2">
+                <h4 className="font-medium">Filter by name</h4>
+                <Input
+                  placeholder="Filter name..."
+                  value={(column.getFilterValue() ?? '')}
+                  onChange={(e) => column.setFilterValue(e.target.value)}
+                  className="max-w-sm"
+                />
+              </div>
+            </PopoverContent>
+          </Popover>
+      </div>
       )
     },
   },
@@ -107,6 +132,7 @@ const columns = [
     accessorKey: 'email',
     header: ({ column }) => {
       return (
+        <div>
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
@@ -114,6 +140,25 @@ const columns = [
           Email
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+        <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Filter className="h-4 w-4" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-80">
+              <div className="space-y-2">
+                <h4 className="font-medium">Filter by email</h4>
+                <Input
+                  placeholder="Filter email..."
+                  value={(column.getFilterValue() ?? '')}
+                  onChange={(e) => column.setFilterValue(e.target.value)}
+                  className="max-w-sm"
+                />
+              </div>
+            </PopoverContent>
+          </Popover>
+      </div>
       )
     },
   },
@@ -129,8 +174,9 @@ const columns = [
 
 export default function UsersPage() {
   const router = useRouter();
-  const [globalFilter, setGlobalFilter] = React.useState('');
-  const [sorting, setSorting] = React.useState([]);
+  const [globalFilter, setGlobalFilter] = useState('');
+  const [sorting, setSorting] = useState([]);
+  const [columnFilters, setColumnFilters] = useState([]);
   const currentPage = parseInt(router.query.page) || 1;
   const itemsPerPage = parseInt(router.query.limit) || 5;
 
@@ -149,9 +195,11 @@ export default function UsersPage() {
     state: {
       globalFilter,
       sorting,
+      columnFilters,
     },
     onGlobalFilterChange: setGlobalFilter,
     onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
     manualPagination: true,
   });
 
