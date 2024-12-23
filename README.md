@@ -78,7 +78,7 @@ Ensure you have the following installed:
 
 This application is hosted on **Vercel**.  
 You can view the live demo here:  
-[Live Demo](https://user-management-table.vercel.app)
+[Live Demo](https://zybra-peach.vercel.app/)
 
 ---
 
