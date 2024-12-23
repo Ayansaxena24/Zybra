@@ -16,6 +16,11 @@ A simple web application built using **Next.js**, **Shadcn**, **TanStack Query**
 - **Search**: Global search input to filter data across all columns.
 - **Pagination**: Paginated data display with dynamic routing support (e.g., `/users?page=1&limit=5`).
 
+  ![Home](https://github.com/user-attachments/assets/983afabf-7696-4a2c-8c26-69c2315de4a7)
+  ![filter + sort](https://github.com/user-attachments/assets/f225a246-22fc-4856-bb3d-d73be622d586)
+  ![Select](https://github.com/user-attachments/assets/40b33c06-1b17-45eb-94de-adb83cfb62d0)
+
+
 ### 3. UI/UX
 - Built with **Shadcn** for a clean, responsive, and user-friendly interface.
 - Includes loading states and error handling for better user experience.
@@ -76,8 +81,7 @@ Ensure you have the following installed:
 
 ## **Deployment**
 
-This application is hosted on **Vercel**.  
-You can view the live demo here:  
+This application is hosted on **Vercel**. You can view the live demo here:  
 [Live Demo](https://zybra-peach.vercel.app/)
 
 ---
